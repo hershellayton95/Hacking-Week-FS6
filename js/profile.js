@@ -1,5 +1,13 @@
+//controllo iniziale
 const token = sessionStorage.getItem('token');
+
+if(!token){
+  window.location.pathname = "/user/login.html";
+}
+
+//codice
 const logout = document.getElementById("logout");
+const deleteUser = document.getElementById("delete-user");
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
@@ -30,12 +38,27 @@ logout.addEventListener("click", (event) => {
   };
   
   fetch("https://api-nodejs-todolist.herokuapp.com/user/logout", requestLogout)
-    .then( () => {
+    .then(() => {
       sessionStorage.removeItem("token");
-      window.location.pathname = "/user/login.html";
-
+      window.location.href = `${window.location.origin}/user/login.html`;
     })
     .catch(error => console.log('error', error));
 })
 
+deleteUser.addEventListener("click", (event) => {
   
+  event.preventDefault();
+
+  const requestDelete = {
+    method: 'DELETE',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+  fetch("https://api-nodejs-todolist.herokuapp.com/user/me", requestDelete)
+    .then(() => {
+      sessionStorage.removeItem("token");
+      window.location.href = `${window.location.origin}/user/signin.html`;
+    })
+    .catch(error => console.log('error', error));
+})

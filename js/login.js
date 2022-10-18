@@ -1,3 +1,11 @@
+//controllo iniziale
+const token = sessionStorage.getItem('token');
+
+if(token){
+  window.location.pathname = "/user/profile.html";
+}
+
+//codice
 const form = document.getElementById("form");
 
 function formData(event, form) {
@@ -27,10 +35,10 @@ const requestOptions = {
 fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
   .then(response => response.json())
   .then(result => {
-
-    sessionStorage.setItem('token', result.token)
-    window.location.pathname = '/user/profile.html';
-  
+    if(result.token){
+      sessionStorage.setItem('token', result.token)
+      window.location.pathname = '/user/profile.html';
+    }
   })
   .catch(error => console.log('error', error));   
 
