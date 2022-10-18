@@ -1,4 +1,5 @@
 const token = sessionStorage.getItem('token');
+const logout = document.getElementById("logout");
 
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
@@ -17,3 +18,24 @@ fetch("https://api-nodejs-todolist.herokuapp.com/user/me", requestOptions)
     document.getElementById('form-age').value = result.age;
 })
   .catch(error => console.log('error', error));
+
+logout.addEventListener("click", (event) => {
+  
+  event.preventDefault();
+
+  const requestLogout = {
+    method: 'POST',
+    headers: myHeaders,
+    redirect: 'follow'
+  };
+  
+  fetch("https://api-nodejs-todolist.herokuapp.com/user/logout", requestLogout)
+    .then( () => {
+      sessionStorage.removeItem("token");
+      window.location.pathname = "/user/login.html";
+
+    })
+    .catch(error => console.log('error', error));
+})
+
+  
