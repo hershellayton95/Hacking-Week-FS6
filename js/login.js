@@ -7,7 +7,37 @@ function formData(event, form) {
   data.forEach((value, key) => {
     person[key] = value;
   });
-  return person;
+  return JSON.stringify(person);
 }
 
-form.addEventListener("submit", (event) => {});
+form.addEventListener("submit", (event) => {
+
+  const myHeaders = new Headers();
+  myHeaders.append("Content-Type", "application/json");
+
+
+
+const requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formData(event, form),
+  redirect: 'follow'
+};
+
+fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+
+    sessionStorage.setItem('token', result.token)
+    window.location.pathname = '/user/profile.html';
+  
+  })
+  .catch(error => console.log('error', error));   
+
+
+});
+
+
+
+
+//ciao@ciaoc.it
