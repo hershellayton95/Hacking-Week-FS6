@@ -58,7 +58,7 @@ deleteUser.addEventListener("click", (event) => {
   fetch("https://api-nodejs-todolist.herokuapp.com/user/me", requestDelete)
     .then(() => {
       sessionStorage.removeItem("token");
-      window.location.href = `${window.location.origin}/user/signin.html`;
+      window.location.href = `${window.location.origin}/user/login.html`;
     })
     .catch(error => console.log('error', error));
 })
