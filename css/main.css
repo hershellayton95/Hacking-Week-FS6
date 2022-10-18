@@ -1,0 +1,22 @@
+body {
+  background: linear-gradient(90deg, #eecda3, #ef629f);
+}
+body .container {
+  height: 100vh;
+}
+body .container .container-fluid {
+  background-color: #fff;
+  max-width: 500px;
+  border-radius: 10px;
+}
+body .container .message {
+  width: 60%;
+  height: 50px;
+}
+@media all and (max-width: 576px) {
+  body .container .message {
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=main.css.map */

@@ -1,0 +1,23 @@
+body{
+  background: linear-gradient(90deg,#eecda3, #ef629f);
+
+  .container{
+    height: 100vh;
+
+    .container-fluid{
+      background-color: #fff;
+      max-width: 500px;
+      border-radius: 10px;
+    }
+
+    .message{
+      width: 60%;
+      height: 50px;
+
+      @media all and (max-width: 576px) {
+        width: 100%;
+      };
+    }
+  }
+}
+
