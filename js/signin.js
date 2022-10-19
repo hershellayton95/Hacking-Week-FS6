@@ -1,3 +1,5 @@
+import {alertMessage} from "./modules.mjs";
+
 const form = document.getElementById("form");
 
 function formData(event, form) {
@@ -22,7 +24,9 @@ form.addEventListener("submit", (event) => {
   };
 
   fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
-  .then(response => response.json())
+  .then(response => {
+    throw new Error ("errore di sto cazzo")
+  })
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
@@ -30,11 +34,7 @@ form.addEventListener("submit", (event) => {
     }
   })
   .catch((error) => {
-    const alert = document.querySelector('.message');
-    alert.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> ${error.message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>`
+    alertMessage(".message", error)
   });
 });
 
