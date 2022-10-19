@@ -21,9 +21,7 @@ form.addEventListener("submit", (event) => {
     redirect: "follow",
   };
 
-  fetch(
-    "https://api-nodejs-todolist.herokuapp.com/user/register",
-    requestOptions)
+  fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
   .then(response => response.json())
   .then(result => {
     if(result.token){
@@ -31,5 +29,16 @@ form.addEventListener("submit", (event) => {
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch((error) => console.log("error", error));
+  .catch((error) => {
+    const alert = document.querySelector('.message');
+    alert.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> ${error.message}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>`
+  });
 });
+
+
+/*
+
+*/
