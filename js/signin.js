@@ -23,6 +23,13 @@ form.addEventListener("submit", (event) => {
 
   fetch(
     "https://api-nodejs-todolist.herokuapp.com/user/register",
-    requestOptions
-  ).catch((error) => console.log("error", error));
+    requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    if(result.token){
+      sessionStorage.setItem('token', result.token)
+      window.location.pathname = '/user/profile.html';
+    }
+  })
+  .catch((error) => console.log("error", error));
 });
