@@ -9,17 +9,7 @@ body .container .container-fluid {
   max-width: 500px;
   border-radius: 10px;
 }
-body .container .message {
-  width: 60%;
-  height: 50px;
-}
-@media all and (max-width: 576px) {
-  body .container .message {
-    width: 100%;
-  }
-}
-
-.gradient-text {
+body .container .container-fluid .gradient-text {
   background-color: red;
   background-image: linear-gradient(90deg, #ef629f, #ffa52f);
   background-size: 100%;
@@ -29,8 +19,7 @@ body .container .message {
   -moz-background-clip: text;
   -moz-text-fill-color: transparent;
 }
-
-.hover-underline-animation {
+body .container .container-fluid .hover-underline-animation {
   display: inline-block;
   position: relative;
   color: #eecda3;
@@ -41,12 +30,10 @@ body .container .message {
   font-weight: 700;
   color: black;
 }
-
-.hover-underline-animation:hover {
+body .container .container-fluid .hover-underline-animation:hover {
   color: black;
 }
-
-.hover-underline-animation:after {
+body .container .container-fluid .hover-underline-animation:after {
   content: "";
   position: absolute;
   width: 100%;
@@ -59,10 +46,18 @@ body .container .message {
   transition: transform 0.25s ease-out;
   background: linear-gradient(to right, #eecda3, #ef629f);
 }
-
-.hover-underline-animation:hover:after {
+body .container .container-fluid .hover-underline-animation:hover:after {
   transform: scaleX(1);
   transform-origin: bottom left;
+}
+body .container .message {
+  width: 60%;
+  height: 50px;
+}
+@media all and (max-width: 576px) {
+  body .container .message {
+    width: 100%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
