@@ -1,4 +1,4 @@
-import {alertMessage} from "./utils.js";
+import {alertMessage, fetchRequest} from "./utils.js";
 
 //controllo iniziale
 const token = sessionStorage.getItem('token');
@@ -34,8 +34,8 @@ const requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
-  .then(response => response.json())
+
+fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
@@ -45,3 +45,4 @@ fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
   .catch(error => alertMessage(".message", error));   
 
 });
+

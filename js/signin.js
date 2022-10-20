@@ -1,4 +1,4 @@
-import {alertMessage} from "./utils.js";
+import {alertMessage, fetchRequest} from "./utils.js";
 
 const form = document.getElementById("form");
 
@@ -23,8 +23,7 @@ form.addEventListener("submit", (event) => {
     redirect: "follow",
   };
 
-  fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
-  .then(response => response.json())
+  fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
