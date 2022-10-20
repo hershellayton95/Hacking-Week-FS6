@@ -1,3 +1,5 @@
+import {alertMessage, fetchRequest} from "./utils.js";
+
 //controllo iniziale
 const token = sessionStorage.getItem('token');
 
@@ -32,20 +34,15 @@ const requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
-  .then(response => response.json())
+
+fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch(error => console.log('error', error));   
-
+  .catch(error => alertMessage(".message", error));   
 
 });
 
-
-
-
-//ciao@ciaoc.it

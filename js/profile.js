@@ -1,3 +1,5 @@
+import {alertMessage, fetchRequest} from "./utils.js";
+
 //controllo iniziale
 const token = sessionStorage.getItem('token');
 
@@ -18,8 +20,8 @@ const requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://api-nodejs-todolist.herokuapp.com/user/me", requestOptions)
-  .then(response => response.json())
+
+fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/me", requestOptions)
   .then(result => {
     document.getElementById('form-email').value = result.email;
     document.getElementById('form-name').value = result.name;
@@ -39,7 +41,7 @@ logout.addEventListener("click", (event) => {
     redirect: 'follow'
   };
   
-  fetch("https://api-nodejs-todolist.herokuapp.com/user/logout", requestLogout)
+  fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/logout", requestLogout)
     .then(() => {
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
@@ -57,10 +59,11 @@ deleteUser.addEventListener("click", (event) => {
     redirect: 'follow'
   };
   
-  fetch("https://api-nodejs-todolist.herokuapp.com/user/me", requestDelete)
+  fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/me", requestDelete)
     .then(() => {
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
-    .catch(error => console.log('error', error));
+    .catch(error => alertMessage(".message", error));
 })
+

@@ -1,3 +1,5 @@
+import {alertMessage, fetchRequest} from "./utils.js";
+
 const form = document.getElementById("form");
 
 function formData(event, form) {
@@ -21,24 +23,12 @@ form.addEventListener("submit", (event) => {
     redirect: "follow",
   };
 
-  fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
-  .then(response => response.json())
+  fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch((error) => {
-    const alert = document.querySelector('.message');
-    alert.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>Holy guacamole!</strong> ${error.message}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  </div>`
-  });
+  .catch((error) => alertMessage(".message", error));
 });
-
-
-/*
-
-*/
