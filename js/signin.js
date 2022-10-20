@@ -1,3 +1,5 @@
+import {alertMessage} from "./utils.js";
+
 const form = document.getElementById("form");
 
 function formData(event, form) {
@@ -21,8 +23,13 @@ form.addEventListener("submit", (event) => {
     redirect: "follow",
   };
 
-  fetch(
-    "https://api-nodejs-todolist.herokuapp.com/user/register",
-    requestOptions
-  ).catch((error) => console.log("error", error));
+  fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
+  .then(response => response.json())
+  .then(result => {
+    if(result.token){
+      sessionStorage.setItem('token', result.token)
+      window.location.pathname = '/user/profile.html';
+    }
+  })
+  .catch((error) => alertMessage(".message", error));
 });
