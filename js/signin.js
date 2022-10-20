@@ -1,5 +1,20 @@
-import { alertMessage, shake, fetchRequest, formData } from "./utils.js";
+import { formData, fetchRequest, alertMessage, shake, getCookie } from "./utils.js";
 
+//controllo iniziale
+if(!sessionStorage.token && getCookie("token")){
+  sessionStorage.setItem("token", getCookie("token"))
+} else if(sessionStorage.token && !getCookie("token")){
+  sessionStorage.removeItem("token");
+}
+
+const token = sessionStorage.getItem("token");
+
+if (token) {
+  window.location.pathname = "/user/profile.html";
+}
+
+//codice
+//registrazione
 const form = document.getElementById("form");
 
 form.addEventListener("submit", (event) => {
@@ -20,6 +35,7 @@ form.addEventListener("submit", (event) => {
     .then((result) => {
       if (result?.token) {
         sessionStorage.setItem("token", result.token);
+        document.cookie = `token=${result.token}; path=/`;
         window.location.pathname = "/user/profile.html";
       }
     })
