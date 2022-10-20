@@ -1,5 +1,7 @@
 import { formData, fetchRequest, alertMessage, shake } from "./utils.js";
 
+
+//registrazione
 const form = document.getElementById("form");
 
 form.addEventListener("submit", (event) => {

@@ -11,6 +11,7 @@ if (!token) {
 const logout = document.getElementById("logout");
 const deleteUser = document.getElementById("delete-user");
 
+//get info
 const myHeaders = new Headers();
 myHeaders.append("Authorization", `Bearer ${token}`);
 
@@ -31,6 +32,9 @@ fetchRequest(
   })
   .catch((error) => console.log("error", error));
 
+
+
+//logout
 logout.addEventListener("click", (event) => {
   event.preventDefault();
 
@@ -54,6 +58,8 @@ logout.addEventListener("click", (event) => {
     });
 });
 
+
+//delete
 deleteUser.addEventListener("click", (event) => {
   event.preventDefault();
 

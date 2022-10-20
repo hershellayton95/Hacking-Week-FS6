@@ -8,6 +8,7 @@ if (token) {
 }
 
 //codice
+//login
 const form = document.getElementById("form");
 
 form.addEventListener("submit", (event) => {
