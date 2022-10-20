@@ -9,9 +9,17 @@ export function alertMessage (elClass, error) {
 
 export async function fetchRequest(url, request){
   const response = await fetch(url, request);
-  const result = await response.json();
-  return result;
+  const result = "";
   
+  if(response.ok){
+    result = await response.json();
+  } else {
+    result = await response.json()
+    .then((error) => {
+      throw new Error(error);
+    })
+  }
+  return result;
 }
 
 
