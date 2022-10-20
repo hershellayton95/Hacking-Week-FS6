@@ -1,5 +1,18 @@
+@use "mixin";
+
 body {
-  background: linear-gradient(90deg, #eecda3, #ef629f);
+  @include mixin.backgroundLinear(#eecda3, #FAECE1, #ffeba9, #FAE2E1, #EF629F);
+
+  &.login{
+    @include mixin.backgroundLinear(#F5DEB5, #FFD1BD, #E8B7C4, #ECBDFF, #9796F0);
+  }
+  &.signin{
+    @include mixin.backgroundLinear(#29961D, #FFEBBD, #E8B7C4, #BDC4FF, #93F9B9);
+  }
+  &.profile{
+    @include mixin.backgroundLinear(#4267ED, #E4BDFF, #E8B7C4, #FFD5BD, #FFEDBC);
+  }
+
 
   .container {
     height: 100vh;
@@ -60,5 +73,32 @@ body {
         width: 100%;
       }
     }
+  }
+}
+
+
+
+.shake {
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
   }
 }
