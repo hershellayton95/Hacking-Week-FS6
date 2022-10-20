@@ -1,10 +1,16 @@
-import { fetchRequest, alertMessage, shake } from "./utils.js";
+import { fetchRequest, alertMessage, shake, getCookie } from "./utils.js";
 
 //controllo iniziale
+if(!sessionStorage.token && getCookie("token")){
+  sessionStorage.setItem("token", getCookie("token"))
+} else if(sessionStorage.token && !getCookie("token")){
+  sessionStorage.removeItem("token");
+}
+
 const token = sessionStorage.getItem("token");
 
-if (!token) {
-  window.location.pathname = "/user/login.html";
+if (!token){
+    window.location.pathname = "/user/login.html";
 }
 
 //codice
@@ -49,6 +55,7 @@ logout.addEventListener("click", (event) => {
     requestLogout
   )
     .then(() => {
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
@@ -74,6 +81,7 @@ deleteUser.addEventListener("click", (event) => {
     requestDelete
   )
     .then(() => {
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
