@@ -1,4 +1,4 @@
-import {alertMessage, fetchRequest} from "./utils.js";
+import {alertMessage, shake, fetchRequest} from "./utils.js";
 
 //controllo iniziale
 const token = sessionStorage.getItem('token');
@@ -42,7 +42,9 @@ fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/login", requestOpti
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch(error => alertMessage(".message", error));   
-
+  .catch((error) => {
+    alertMessage(".message", error);
+    shake('.container-fluid');
+  }); 
 });
 
