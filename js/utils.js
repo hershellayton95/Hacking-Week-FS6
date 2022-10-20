@@ -14,6 +14,11 @@ export async function fetchRequest(url, request) {
 
   if (response.ok) {
     result = await response.json();
+  } else if(response.status === 401){
+
+    document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
+    sessionStorage.removeItem("token")
+    window.location.href = `${window.location.origin}/user/login.html`;
   } else {
     result = await response.json().then((error) => {
       throw new Error(error);
@@ -38,7 +43,7 @@ export function shake(elementClass) {
   }, 1000);
 }
 
-export function getCookie(cname) {
+function getCookie(cname) {
   let name = cname + "=";
   let decodedCookie = decodeURIComponent(document.cookie);
   let ca = decodedCookie.split(';');
@@ -52,6 +57,16 @@ export function getCookie(cname) {
     }
   }
   return "";
+}
+
+export function getToken() {
+  if (!sessionStorage.token && getCookie("token")) {
+    sessionStorage.setItem("token", getCookie("token"));
+  } else if (sessionStorage.token && !getCookie("token")) {
+    sessionStorage.removeItem("token");
+  }
+
+  return sessionStorage.getItem("token");
 }
 
 export default () => console.log("utils.js");

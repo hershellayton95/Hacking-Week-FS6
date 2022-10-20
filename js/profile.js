@@ -1,16 +1,25 @@
-import { fetchRequest, alertMessage, shake, getCookie } from "./utils.js";
+import { fetchRequest, alertMessage, shake, getToken } from "./utils.js";
 
 //controllo iniziale
-if(!sessionStorage.token && getCookie("token")){
-  sessionStorage.setItem("token", getCookie("token"))
-} else if(sessionStorage.token && !getCookie("token")){
-  sessionStorage.removeItem("token");
-}
 
-const token = sessionStorage.getItem("token");
+  // fetch("https://api-nodejs-todolist.herokuapp.com/user/me", {
+  //   method: "GET",
+  //   headers: { Authorization: `Bearer ${getToken()}` },
+  //   redirect: "error",
+  // })
+  // .then((response) =>{
+  //   if(response.status === 401){
 
-if (!token){
-    window.location.pathname = "/user/login.html";
+  //     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
+  //     sessionStorage.removeItem("token")
+  //     window.location.href = `${window.location.origin}/user/login.html`;
+  //   }
+  // });
+  
+  const token = getToken();
+
+if (!token) {
+  window.location.pathname = "/user/login.html";
 }
 
 //codice
@@ -38,8 +47,6 @@ fetchRequest(
   })
   .catch((error) => console.log("error", error));
 
-
-
 //logout
 logout.addEventListener("click", (event) => {
   event.preventDefault();
@@ -55,7 +62,8 @@ logout.addEventListener("click", (event) => {
     requestLogout
   )
     .then(() => {
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
@@ -64,7 +72,6 @@ logout.addEventListener("click", (event) => {
       shake(".container-fluid");
     });
 });
-
 
 //delete
 deleteUser.addEventListener("click", (event) => {
@@ -81,7 +88,8 @@ deleteUser.addEventListener("click", (event) => {
     requestDelete
   )
     .then(() => {
-      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      document.cookie =
+        "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
