@@ -1,5 +1,18 @@
+@use "mixin";
+
 body {
-  background: linear-gradient(90deg, #eecda3, #ef629f);
+  @include mixin.backgroundLinear(#eecda3, #FAECE1, #ffeba9, #FAE2E1, #EF629F);
+
+  &.login{
+    @include mixin.backgroundLinear(#F5DEB5, #FFD1BD, #E8B7C4, #ECBDFF, #9796F0);
+  }
+  &.signin{
+    @include mixin.backgroundLinear(#29961D, #FFEBBD, #E8B7C4, #BDC4FF, #93F9B9);
+  }
+  &.profile{
+    @include mixin.backgroundLinear(#4267ED, #E4BDFF, #E8B7C4, #FFD5BD, #FFEDBC);
+  }
+
 
   .container {
     height: 100vh;

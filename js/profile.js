@@ -1,4 +1,4 @@
-import { alertMessage, fetchRequest } from "./utils.js";
+import { fetchRequest, alertMessage } from "./utils.js";
 
 //controllo iniziale
 const token = sessionStorage.getItem("token");
@@ -28,8 +28,6 @@ fetchRequest(
     document.getElementById("form-email").value = result.email;
     document.getElementById("form-name").value = result.name;
     document.getElementById("form-age").value = result.age;
-
-    // si può fare un ciclo for?
   })
   .catch((error) => console.log("error", error));
 

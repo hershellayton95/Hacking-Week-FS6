@@ -1,5 +1,70 @@
 body {
-  background: linear-gradient(90deg, #eecda3, #ef629f);
+  background: linear-gradient(-45deg, #eecda3, #FAECE1, #ffeba9, #FAE2E1, #EF629F);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+body.login {
+  background: linear-gradient(-45deg, #F5DEB5, #FFD1BD, #E8B7C4, #ECBDFF, #9796F0);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+body.signin {
+  background: linear-gradient(-45deg, #29961D, #FFEBBD, #E8B7C4, #BDC4FF, #93F9B9);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+body.profile {
+  background: linear-gradient(-45deg, #4267ED, #E4BDFF, #E8B7C4, #FFD5BD, #FFEDBC);
+  background-size: 400% 400%;
+  animation: gradient 20s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 body .container {
   height: 100vh;

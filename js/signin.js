@@ -1,4 +1,4 @@
-import { alertMessage, shake, fetchRequest, formData } from "./utils.js";
+import { formData, fetchRequest, alertMessage, shake } from "./utils.js";
 
 const form = document.getElementById("form");
 

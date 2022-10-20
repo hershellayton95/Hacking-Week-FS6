@@ -1,3 +1,27 @@
+export function formData(event, form) {
+  event.preventDefault();
+  const data = new FormData(form);
+  const person = {};
+  data.forEach((value, key) => {
+    person[key] = value;
+  });
+  return JSON.stringify(person);
+}
+
+export async function fetchRequest(url, request) {
+  const response = await fetch(url, request);
+  let result = "";
+
+  if (response.ok) {
+    result = await response.json();
+  } else {
+    result = await response.json().then((error) => {
+      throw new Error(error);
+    });
+  }
+  return result;
+}
+
 export function alertMessage(elClass, error) {
   const alert = document.querySelector(elClass);
   alert.innerHTML = `<div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -12,30 +36,6 @@ export function shake(elementClass) {
   setTimeout(() => {
     shake.classList.remove("shake");
   }, 1000);
-}
-
-export function formData(event, form) {
-  event.preventDefault();
-  const data = new FormData(form);
-  const person = {};
-  data.forEach((value, key) => {
-    person[key] = value;
-  });
-  return JSON.stringify(person);
-}
-
-export async function fetchRequest(url, request) {
-  const response = await fetch(url, request);
-  const result = "";
-
-  if (response.ok) {
-    result = await response.json();
-  } else {
-    result = await response.json().then((error) => {
-      throw new Error(error);
-    });
-  }
-  return result;
 }
 
 export default () => console.log("utils.js");
