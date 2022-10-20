@@ -1,22 +1,7 @@
 import { fetchRequest, alertMessage, shake, getToken } from "./utils.js";
 
 //controllo iniziale
-
-  // fetch("https://api-nodejs-todolist.herokuapp.com/user/me", {
-  //   method: "GET",
-  //   headers: { Authorization: `Bearer ${getToken()}` },
-  //   redirect: "error",
-  // })
-  // .then((response) =>{
-  //   if(response.status === 401){
-
-  //     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
-  //     sessionStorage.removeItem("token")
-  //     window.location.href = `${window.location.origin}/user/login.html`;
-  //   }
-  // });
-  
-  const token = getToken();
+const token = getToken();
 
 if (!token) {
   window.location.pathname = "/user/login.html";
@@ -62,8 +47,7 @@ logout.addEventListener("click", (event) => {
     requestLogout
   )
     .then(() => {
-      document.cookie =
-        "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
@@ -88,8 +72,7 @@ deleteUser.addEventListener("click", (event) => {
     requestDelete
   )
     .then(() => {
-      document.cookie =
-        "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
