@@ -6,4 +6,15 @@ export function alertMessage (elClass, error) {
     </div>`;
 }
 
+
+export async function fetchRequest(url, request){
+  const response = await fetch(url, request);
+  const result = await response.json();
+  return result;
+  
+}
+
+
 export default () => console.log("utils.js");
+
+
