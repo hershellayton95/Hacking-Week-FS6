@@ -1,4 +1,4 @@
-import {alertMessage} from "./modules.mjs";
+import {alertMessage} from "./utils.js";
 
 const form = document.getElementById("form");
 
@@ -24,21 +24,12 @@ form.addEventListener("submit", (event) => {
   };
 
   fetch("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
-  .then(response => {
-    throw new Error ("errore di sto cazzo")
-  })
+  .then(response => response.json())
   .then(result => {
     if(result.token){
       sessionStorage.setItem('token', result.token)
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch((error) => {
-    alertMessage(".message", error)
-  });
+  .catch((error) => alertMessage(".message", error));
 });
-
-
-/*
-
-*/

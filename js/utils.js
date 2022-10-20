@@ -5,3 +5,5 @@ export function alertMessage (elClass, error) {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>`;
 }
+
+export default () => console.log("utils.js");
