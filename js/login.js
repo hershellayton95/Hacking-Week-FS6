@@ -1,3 +1,5 @@
+import {alertMessage} from "./utils.js";
+
 //controllo iniziale
 const token = sessionStorage.getItem('token');
 
@@ -40,12 +42,6 @@ fetch("https://api-nodejs-todolist.herokuapp.com/user/login", requestOptions)
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch(error => console.log('error', error));   
-
+  .catch(error => alertMessage(".message", error));   
 
 });
-
-
-
-
-//ciao@ciaoc.it

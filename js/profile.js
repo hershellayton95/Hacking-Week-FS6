@@ -1,3 +1,5 @@
+import {alertMessage} from "./utils.js";
+
 //controllo iniziale
 const token = sessionStorage.getItem('token');
 
@@ -62,5 +64,5 @@ deleteUser.addEventListener("click", (event) => {
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
-    .catch(error => console.log('error', error));
+    .catch(error => alertMessage(".message", error));
 })
