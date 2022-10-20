@@ -3,6 +3,7 @@
 	background-size: 400% 400%;
 	animation: gradient 20s ease infinite;
 	height: 100vh;
+}
 
 @keyframes gradient {
 	0% {
@@ -14,5 +15,4 @@
 	100% {
 		background-position: 0% 50%;
 	}
-}
 }

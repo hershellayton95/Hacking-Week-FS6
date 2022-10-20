@@ -1,4 +1,4 @@
-import { fetchRequest, alertMessage } from "./utils.js";
+import { fetchRequest, alertMessage, shake } from "./utils.js";
 
 //controllo iniziale
 const token = sessionStorage.getItem("token");
@@ -48,7 +48,10 @@ logout.addEventListener("click", (event) => {
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
-    .catch((error) => console.log("error", error));
+    .catch((error) => {
+      alertMessage(".message", error);
+      shake(".container-fluid");
+    });
 });
 
 deleteUser.addEventListener("click", (event) => {
@@ -68,5 +71,8 @@ deleteUser.addEventListener("click", (event) => {
       sessionStorage.removeItem("token");
       window.location.href = `${window.location.origin}/user/login.html`;
     })
-    .catch((error) => alertMessage(".message", error));
+    .catch((error) => {
+      alertMessage(".message", error);
+      shake(".container-fluid");
+    });
 });
