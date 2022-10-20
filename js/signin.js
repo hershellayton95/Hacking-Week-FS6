@@ -25,7 +25,7 @@ form.addEventListener("submit", (event) => {
 
   fetchRequest("https://api-nodejs-todolist.herokuapp.com/user/register", requestOptions)
   .then(result => {
-    if(result.token){
+    if(result?.token){
       sessionStorage.setItem('token', result.token)
       window.location.pathname = '/user/profile.html';
     }
