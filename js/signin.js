@@ -1,4 +1,5 @@
-import {alertMessage, fetchRequest} from "./utils.js";
+import {alertMessage, shake, fetchRequest} from "./utils.js";
+
 
 const form = document.getElementById("form");
 
@@ -30,5 +31,8 @@ form.addEventListener("submit", (event) => {
       window.location.pathname = '/user/profile.html';
     }
   })
-  .catch((error) => alertMessage(".message", error));
+  .catch((error) => {
+    alertMessage(".message", error);
+    shake('.container-fluid');
+  });
 });

@@ -6,6 +6,14 @@ export function alertMessage (elClass, error) {
     </div>`;
 }
 
+export function shake (elementClass) {
+  const shake = document.querySelector(elementClass);
+  shake.classList.add('shake');
+    setTimeout(() => {
+      shake.classList.remove('shake');
+    }, 1000);
+}
+
 
 export async function fetchRequest(url, request){
   const response = await fetch(url, request);
