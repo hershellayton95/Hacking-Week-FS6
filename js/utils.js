@@ -17,7 +17,7 @@ export async function fetchRequest(url, request) {
   } else if(response.status === 401){
 
     document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=;";
-    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("token");
     window.location.href = `${window.location.origin}/user/login.html`;
   } else {
     result = await response.json().then((error) => {
@@ -62,7 +62,7 @@ function getCookie(cname) {
 export function getToken() {
   if (!sessionStorage.token && getCookie("token")) {
     sessionStorage.setItem("token", getCookie("token"));
-  } else if (sessionStorage.token && !getCookie("token")) {
+  }else if (sessionStorage.token && !getCookie("token")) {
     sessionStorage.removeItem("token");
   }
 
