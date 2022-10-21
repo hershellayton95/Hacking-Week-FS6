@@ -22,6 +22,10 @@ body {
       max-width: 500px;
       border-radius: 10px;
 
+    input.form-control[disabled] {
+      background: unset;
+      border: none;
+  }
       .gradient-text {
         background-color: red;
         background-image: linear-gradient(90deg, #ef629f, #ffa52f);
