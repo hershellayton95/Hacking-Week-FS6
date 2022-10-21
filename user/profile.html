@@ -29,35 +29,50 @@
         <div class="row justify-content-center my-2">
           <div class="mt-3">
             <form id="form">
-              <label for="form-email" class="form-label"></label>
-              <input
-                type="email"
-                name="email"
-                id="form-email"
-                placeholder="Email"
-                class="form-control"
-                value=""
-              />
+              <div class="d-flex align-items-baseline">
+                <label for="form-email" class="form-label"
+                  ><strong>Email:</strong></label
+                >
+                <input
+                  type="email"
+                  name="email"
+                  id="form-email"
+                  placeholder="Email"
+                  class="form-control"
+                  value=""
+                  disabled
+                />
+              </div>
 
-              <label for="form-name"></label>
-              <input
-                type="text"
-                name="name"
-                id="form-name"
-                placeholder="Nome"
-                class="form-control"
-                value=""
-              />
+              <div class="d-flex align-items-baseline">
+                <label for="form-email" class="form-label"
+                  ><strong>Nome:</strong></label
+                >
+                <input
+                  type="text"
+                  name="name"
+                  id="form-name"
+                  placeholder="Nome"
+                  class="form-control"
+                  value=""
+                  disabled
+                />
+              </div>
 
-              <label for="form-age"></label>
-              <input
-                type="text"
-                name="age"
-                id="form-age"
-                placeholder="Età"
-                class="form-control"
-                value=""
-              />
+              <div class="d-flex align-items-baseline">
+                <label for="form-email" class="form-label"
+                  ><strong>Età:</strong></label
+                >
+                <input
+                  type="text"
+                  name="age"
+                  id="form-age"
+                  placeholder="Età"
+                  class="form-control dis"
+                  value=""
+                  disabled
+                />
+              </div>
             </form>
             <div class="text-center my-4 mt-5 d-grid gap-2 col-12 mx-auto">
               <button class="btn btn-outline-danger" id="logout">Logout</button>
